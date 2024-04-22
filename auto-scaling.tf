@@ -7,11 +7,11 @@ resource "aws_autoscaling_group" "autoscaling_group" {
   desired_capacity          = 3
   force_delete              = true
   launch_template {
-    id = aws_launch_template.launch_template.id
+    id      = aws_launch_template.launch_template.id
     version = "$Latest"
   }
-  vpc_zone_identifier  = [aws_subnet.subnet_1a.id, aws_subnet.subnet_1b.id]
-  depends_on           = [aws_vpc.vpc_terraform]
+  vpc_zone_identifier = [aws_subnet.subnet_1a.id, aws_subnet.subnet_1b.id]
+  depends_on          = [aws_vpc.vpc_terraform]
 
   instance_maintenance_policy {
     min_healthy_percentage = 90
